@@ -1,12 +1,14 @@
+package com.ttasjwi.LottoGame.domain.lotto;
 
-# LottoGame
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-- 로또 게임 구현 (스프링 부트)
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
----
-
-## LottoNumber
-```java
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class LottoNumber {
@@ -41,14 +43,3 @@ public class LottoNumber {
     }
 
 }
-```
-- 로또 번호를 정의함
-- `of` 메서드를 통해 `LottoNumber`를 반환함.
-- 만약 유효값에 해당하지 않는 value를 인자로 호출하였을 경우, IllegalArgumentException이 발생함.
-
----
-
-## 고민 포인트
-- `MIN_LOTTO_NUMBER`, `MAX_LOTTO_NUMBER` : 테스트코드의 작성시 경계값 테스트의 유지보수성을 위해 외부에 노출했는데, 이것이 과연 올바른 방식일까?
-
----
