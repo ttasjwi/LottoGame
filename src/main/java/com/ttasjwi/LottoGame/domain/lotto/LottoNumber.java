@@ -14,18 +14,13 @@ import java.util.stream.IntStream;
 public class LottoNumber {
 
     private static final Map<Integer, LottoNumber> LOTTO_NUMBER_POOL;
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 45;
-
-    public static final LottoNumber MIN_LOTTO_NUMBER;
-    public static final LottoNumber MAX_LOTTO_NUMBER;
+    private static final int MIN_LOTTO_NUMBER = 1;
+    private static final int MAX_LOTTO_NUMBER = 45;
 
     static {
-        LOTTO_NUMBER_POOL = IntStream.rangeClosed(MIN_VALUE, MAX_VALUE)
+        LOTTO_NUMBER_POOL = IntStream.rangeClosed(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER)
                                     .boxed()
                                     .collect(Collectors.toMap(Function.identity(), LottoNumber::new));
-        MIN_LOTTO_NUMBER = LOTTO_NUMBER_POOL.get(MIN_VALUE);
-        MAX_LOTTO_NUMBER = LOTTO_NUMBER_POOL.get(MAX_VALUE);
     }
 
     private final int value;
@@ -38,7 +33,7 @@ public class LottoNumber {
 
     private static void validateLottoNumberExistence(LottoNumber lottoNumber) {
         if (lottoNumber == null) {
-            throw new IllegalArgumentException(String.format("로또 번호의 유효 범위는 %d 이상 %d 이하입니다.", MIN_VALUE, MAX_VALUE));
+            throw new IllegalArgumentException(String.format("로또 번호의 유효 범위는 %d 이상 %d 이하입니다.", MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER));
         }
     }
 
